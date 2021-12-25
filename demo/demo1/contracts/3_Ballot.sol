@@ -55,4 +55,59 @@ contract Ballot {
         voters[voter].weight = 1;
     }
 
+    function delegate(address to) public {
+        Voter storage sender = voters[msg.sender];
+        require(!sender.voted, "You already voted");
+        require(to != msg.sender, "Self-delegation is disallowed.");
+
+        while(voters[to].delegate != address(0)) {
+            to = voters[to].delegate;
+
+            require(to != msg.sender, "Found loop in delegation");
+        }
+
+        sender.voted = true;
+        sender.delegate = to;
+        Voter storage delegate_ = voters[to];
+        if(delegate_.voted) {
+            // If the delegate already voted,
+            // directly add to the number of votes
+            proposals[delegate_.vote].voteCount += sender.weight;
+        } else {
+
+            delegate_.weight += sender.weight;
+        }
+    }
+
+    function vote(uint proposal) public {
+        Voter storage sender = voters[msg.sender];
+        require(sender.weight != 0, "Has no right to vote");
+        require(!sender.voted, "Already voted");
+        sender.voted = true;
+        sender.vote = proposal;
+
+        // If 'proposal' is out of the range of the array,
+        // this will throw automatically and revert all
+        // changes.
+        proposals[proposal].voteCount += sender.weight;
+    }
+
+    func winningProposal() public view 
+            returns (uint winningProposal_)
+    {
+        uint winningVoteCount = 0;
+        for (uint p = 0; p < proposals.length; p++) {
+            if (proposals[p].voteCount > winningVoteCount) {
+                winningVoteCount = proposals[p].voteCount;
+                winningProposal_ = p;
+            }
+        }
+    }
+
+    function winnerName() public view 
+            returns (bytes winnerName_) 
+    {
+        winnerName_ = proposals[winningProposal()].name;
+    }
+
 }
