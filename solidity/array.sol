@@ -25,13 +25,6 @@ contract Array {
         arr.push(i);
     }
 
-
-    function push(uint i) public {
-        // Append to array
-        // This will increase the array length by 1.
-        arr.push(i);
-    }
-
 }
 
 
