@@ -1,3 +1,5 @@
+## differences between `external` and `public`
+
 ### `external` vs `public` best practices
 
 What are the best practices of using `external` vs `public` keyword? Are there any patterns or recommendations? 
@@ -43,4 +45,6 @@ private - can be accessed only from this contract
 ```link
 https://ethereum.stackexchange.com/questions/19380/external-vs-public-best-practices#:~:text=The%20difference%20is%20because%20in%20public%20functions%2C%20Solidity,is%20expensive%2C%20whereas%20reading%20from%20calldata%20is%20cheap.
 ```
+
+
 
