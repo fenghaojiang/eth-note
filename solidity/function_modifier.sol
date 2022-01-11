@@ -35,6 +35,8 @@ contract FunctionModifier {
     // This modifier prevents a function from being called while
     // it is still executing.
 
+
+    // 防止重入攻击 详情: https://lopsided-almond-da4.notion.site/91b64edd20194f269d6e2c8747ebc847
     modifier noReentrancy() {
         require(!locked, "No reentrancy");
         locked = true;
