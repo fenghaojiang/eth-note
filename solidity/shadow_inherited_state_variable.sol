@@ -20,5 +20,12 @@ contract A {
 //     string public name = "Contract B";
 // }
 
+contract C is A {
+    // This is the correct way to override inherited state variables.
+    constructor() {
+        name = "Contract C";
+    }
 
+    // C.getName returns "Contract C"
+}
 
