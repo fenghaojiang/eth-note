@@ -66,7 +66,7 @@ contract E is C, B {
 
 // Inheritance must be ordered from “most base-like” to “most derived”.
 // Swapping the order of A and B will throw a compilation error.
-contract F is A, B {
+contract F is A, B { //why
     function foo() public pure override(A, B) returns (string memory) {
         return super.foo();
     }
