@@ -90,7 +90,7 @@ export function handleTransfer(event: Transfer): void {
 
       // save entities
       transaction.save()
-      factory.save()
+      factory.save() //TODO
     }
   }
 
@@ -190,7 +190,7 @@ export function handleTransfer(event: Transfer): void {
       burns.push(burn.id)
     }
     transaction.burns = burns
-    transaction.save()
+    transaction.save() //TODO
   }
 
   if (from.toHexString() != ADDRESS_ZERO && from.toHexString() != pair.id) {
@@ -207,7 +207,7 @@ export function handleTransfer(event: Transfer): void {
     createLiquiditySnapshot(toUserLiquidityPosition, event)
   }
 
-  transaction.save()
+  transaction.save()  //TODO
 }
 
 export function handleSync(event: Sync): void {
