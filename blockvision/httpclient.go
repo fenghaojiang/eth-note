@@ -14,13 +14,14 @@ func init() {
 	httpClient = &http.Client{}
 }
 
-const bvUrl string = "https://apis.blockvision.org/v1/240296ikIjqhT9OyudPS2eNHPWA"
+const bvUrl string = "http://apis.blockvision.org/v1/240296ikIjqhT9OyudPS2eNHPWA"
 
 func doPost() {
 	params := make(map[string]interface{})
 	params["jsonrpc"] = "2.0"
 	params["method"] = "eth_getBalance"
 	params["params"] = []string{"0x6aeE2AA1fbfaB47E23360cc30511320Df8f8764E", "latest"}
+	params["id"] = 1
 	content, err := json.Marshal(params)
 	if err != nil {
 		fmt.Println(err.Error())
@@ -43,5 +44,5 @@ func doPost() {
 		fmt.Println(err.Error())
 		return
 	}
-	fmt.Println(string(respInfo))
+	fmt.Println("resp", string(respInfo))
 }
