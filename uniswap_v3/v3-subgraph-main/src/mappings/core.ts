@@ -355,7 +355,7 @@ export function handleSwap(event: SwapEvent): void {
   let prices = sqrtPriceX96ToTokenPrices(pool.sqrtPrice, token0 as Token, token1 as Token)
   pool.token0Price = prices[0]
   pool.token1Price = prices[1]
-  pool.save()
+  pool.save()  //Why??? 
 
   // update USD pricing
   bundle.ethPriceUSD = getEthPriceInUSD()
@@ -452,7 +452,7 @@ export function handleSwap(event: SwapEvent): void {
   uniswapDayData.save()
   poolDayData.save()
   factory.save()
-  pool.save()
+  pool.save()  //why
   token0.save()
   token1.save()
 
