@@ -23,7 +23,7 @@ import {
 import { createTick, feeTierToTickSpacing } from '../utils/tick'
 
 export function handleInitialize(event: Initialize): void {
-  let pool = Pool.load(event.address.toHexString())
+  let pool = Pool.load(event.address.toHexString())  //from source
   pool.sqrtPrice = event.params.sqrtPriceX96
   pool.tick = BigInt.fromI32(event.params.tick)
   // update token prices
@@ -219,7 +219,7 @@ export function handleBurn(event: BurnEvent): void {
   factory.totalValueLockedUSD = factory.totalValueLockedETH.times(bundle.ethPriceUSD)
 
   // burn entity
-  let transaction = loadTransaction(event)
+  let transaction = loadTransaction(event) //from source
   let burn = new Burn(transaction.id + '#' + pool.txCount.toString())
   burn.transaction = transaction.id
   burn.timestamp = transaction.timestamp
