@@ -6,4 +6,7 @@ Optimism block production is primarily managed by a single party, called the "se
 + Constructing and executing L2 blocks
 + Submitting user transactions to L1  
 
+Optimism nodes are made up of two primary components, the Ethereum data indexer and the Optimism client software.   
+
+
 
